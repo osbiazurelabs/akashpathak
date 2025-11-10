@@ -1,0 +1,19 @@
+{
+	"name": "DS_sink_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_storage_account",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "sink"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
