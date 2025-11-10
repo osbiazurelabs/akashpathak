@@ -93,6 +93,30 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_sink_parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_storage_account",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "sink"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_storage_account')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/csvToADLS')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -123,14 +147,12 @@
 								}
 							},
 							"sink": {
-								"type": "DelimitedTextSink",
+								"type": "ParquetSink",
 								"storeSettings": {
 									"type": "AzureBlobFSWriteSettings"
 								},
 								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
+									"type": "ParquetWriteSettings"
 								}
 							},
 							"enableStaging": false,
@@ -152,7 +174,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_sink",
+								"referenceName": "DS_sink_parquet",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -166,7 +188,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_source')]",
-				"[concat(variables('factoryId'), '/datasets/DS_sink')]"
+				"[concat(variables('factoryId'), '/datasets/DS_sink_parquet')]"
 			]
 		}
 	]
