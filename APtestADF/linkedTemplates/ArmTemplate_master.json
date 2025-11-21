@@ -11,9 +11,25 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_AzureDataLakeStorage'"
 		},
+		"LS_onprem_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_onprem'"
+		},
 		"LS_AzureDataLakeStorage_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adfstgtestacc.dfs.core.windows.net/"
+		},
+		"LS_onprem_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "onprem-vm"
+		},
+		"LS_onprem_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "onprem-test-database"
+		},
+		"LS_onprem_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "osbiazurelab"
 		},
 		"containerUri": {
 			"type": "string",
@@ -45,8 +61,20 @@
 					"LS_AzureDataLakeStorage_accountKey": {
 						"value": "[parameters('LS_AzureDataLakeStorage_accountKey')]"
 					},
+					"LS_onprem_password": {
+						"value": "[parameters('LS_onprem_password')]"
+					},
 					"LS_AzureDataLakeStorage_properties_typeProperties_url": {
 						"value": "[parameters('LS_AzureDataLakeStorage_properties_typeProperties_url')]"
+					},
+					"LS_onprem_properties_typeProperties_server": {
+						"value": "[parameters('LS_onprem_properties_typeProperties_server')]"
+					},
+					"LS_onprem_properties_typeProperties_database": {
+						"value": "[parameters('LS_onprem_properties_typeProperties_database')]"
+					},
+					"LS_onprem_properties_typeProperties_userName": {
+						"value": "[parameters('LS_onprem_properties_typeProperties_userName')]"
 					}
 				}
 			},

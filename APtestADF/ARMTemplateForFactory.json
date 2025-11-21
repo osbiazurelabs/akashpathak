@@ -11,9 +11,25 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_AzureDataLakeStorage'"
 		},
+		"LS_onprem_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_onprem'"
+		},
 		"LS_AzureDataLakeStorage_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adfstgtestacc.dfs.core.windows.net/"
+		},
+		"LS_onprem_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "onprem-vm"
+		},
+		"LS_onprem_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "onprem-test-database"
+		},
+		"LS_onprem_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "osbiazurelab"
 		}
 	},
 	"variables": {
@@ -99,6 +115,60 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_source_onprem')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_onprem",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "EmployeeID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "FirstName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LastName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Age",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "Department",
+						"type": "nvarchar"
+					},
+					{
+						"name": "HireDate",
+						"type": "date"
+					},
+					{
+						"name": "Salary",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 2
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Employee"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_onprem')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LS_AzureDataLakeStorage')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -114,6 +184,34 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_onprem')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_onprem_properties_typeProperties_server')]",
+					"database": "[parameters('LS_onprem_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "Windows",
+					"userName": "[parameters('LS_onprem_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_onprem_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "onprem-ir",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/onprem-ir')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/onprem-ir')]",

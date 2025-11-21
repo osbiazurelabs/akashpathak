@@ -8,8 +8,20 @@
 		"LS_AzureDataLakeStorage_accountKey": {
 			"value": ""
 		},
+		"LS_onprem_password": {
+			"value": ""
+		},
 		"LS_AzureDataLakeStorage_properties_typeProperties_url": {
 			"value": "https://adfstgtestacc.dfs.core.windows.net/"
+		},
+		"LS_onprem_properties_typeProperties_server": {
+			"value": "onprem-vm"
+		},
+		"LS_onprem_properties_typeProperties_database": {
+			"value": "onprem-test-database"
+		},
+		"LS_onprem_properties_typeProperties_userName": {
+			"value": "osbiazurelab"
 		},
 		"containerUri": {
 			"value": ""
