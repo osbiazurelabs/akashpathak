@@ -9,9 +9,9 @@
 			"database": "onprem-test-database",
 			"encrypt": "optional",
 			"trustServerCertificate": false,
-			"authenticationType": "SQL",
+			"authenticationType": "Windows",
 			"userName": "osbiazurelab",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1ZmQ0NmEyOS0yYzY3LTQzZDktOGE5ZC1jZjE5NGM3NWI2ZWEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3Y2QwMjBlZS0xNDU1LTQ5YWUtODg2NS0wYmFkNDU2NjkyMzUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "onprem-ir",
