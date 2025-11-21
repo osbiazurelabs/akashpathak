@@ -21,17 +21,14 @@
 						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "ParquetSink",
+						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings",
-							"metadata": [
-								{
-									"value": ""
-								}
-							]
+							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
-							"type": "ParquetWriteSettings"
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
 						}
 					},
 					"enableStaging": false,
@@ -52,7 +49,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_sink_Parquet",
+						"referenceName": "DS_sink_CSV",
 						"type": "DatasetReference"
 					}
 				]
