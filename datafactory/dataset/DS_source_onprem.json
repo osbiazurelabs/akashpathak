@@ -1,0 +1,49 @@
+{
+	"name": "DS_source_onprem",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_onprem",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "EmployeeID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FirstName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LastName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Age",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Department",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HireDate",
+				"type": "date"
+			},
+			{
+				"name": "Salary",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Employee"
+		}
+	}
+}
