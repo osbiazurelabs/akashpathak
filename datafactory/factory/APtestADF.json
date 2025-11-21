@@ -1,0 +1,9 @@
+{
+	"name": "APtestADF",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f864013d-4abe-40ee-9747-ac524746a8f6",
+		"tenantId": "5df01df6-e38c-42dd-8206-cfc3e9ee5861"
+	}
+}
