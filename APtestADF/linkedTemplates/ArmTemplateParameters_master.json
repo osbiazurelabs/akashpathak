@@ -8,11 +8,17 @@
 		"LS_AzureDataLakeStorage_accountKey": {
 			"value": ""
 		},
+		"LS_Databricks_accessToken": {
+			"value": ""
+		},
 		"LS_onprem_password": {
 			"value": ""
 		},
 		"LS_AzureDataLakeStorage_properties_typeProperties_url": {
 			"value": "https://adfstgtestacc.dfs.core.windows.net/"
+		},
+		"LS_Databricks_properties_typeProperties_existingClusterId": {
+			"value": "1124-074830-suq7j25e"
 		},
 		"LS_onprem_properties_typeProperties_server": {
 			"value": "onprem-vm"
